@@ -1,0 +1,44 @@
+﻿@page
+@model GitDump.Pages.Tests.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post">
+    <input hidden asp-for="Topic.Id" />
+    <div class="container p-5">
+
+        <div class="col-6">
+            <h2 style="color:tomato">Update Test Data</h2>
+        </div>
+        <hr />
+        <div class="center">
+            <div asp-validation-summary="All"></div>
+            <div class="border p-3 mt-4">
+                <div class="mb-3">
+                    <label asp-for="Topic.Name"></label>
+                    <input asp-for="Topic.Name" class="form-control" />
+                    <span asp-validation-for="Topic.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Topic.Status"></label>
+                    <select asp-for="Topic.Status" class="form-control" />
+                    <option value="@Model.Topic.Status">@Model.Topic.Status</option>
+                        <option value="started">started</option>
+                        <option value="ongoing">ongoing</option>
+                        <option value="success"> success</option>
+                    </select>
+                    <span asp-validation-for="Topic.Status" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Topic.Description"></label>
+                    <input asp-for="Topic.Description" class="form-control" />
+                    <span asp-validation-for="Topic.Description" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100px;">Update</button>
+                <a asp-page="Index" class="btn btn-secondary" style="width:100px;">Cancel</a>
+            </div>
+        </div>
+
+    </div>
+</form>

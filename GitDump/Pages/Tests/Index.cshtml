@@ -1,0 +1,78 @@
+﻿@page
+@model GitDump.Pages.Tests.IndexModel
+@{
+    ViewData["Title"] = "Test";
+
+}
+
+<div class="container p-5">
+    
+        <div class="col-6">
+        <h2 style="color:tomato">Test Data</h2>
+        </div>
+        <hr />
+        <div class="text-center mb-4">
+            <a asp-page="create" class="btn btn-primary">
+            <i class="bi bi-plus-circle-fill"></i>
+            </a>
+        </div>
+    
+   
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th style="color:tomato">Id</th>
+                <th style="color:tomato">Test Name</th>
+                <th style="color:tomato">Status</th>
+                <th style="color:tomato">Description</th>
+                <th style="color:tomato">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Tests){
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    @if (item.Status == "started")
+                    {
+                        <td>
+                            <span class="badge text-bg-secondary">@item.Status</span>
+                        </td>
+                    }
+                    else
+                    {
+                        @if(item.Status == "ongoing")
+                        {
+                            <td>
+                                <span class="badge text-bg-info">@item.Status</span>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <span class="badge text-bg-success">@item.Status</span>
+                            </td>
+                        }
+                    }
+                    <td>
+                        @GitDump.StringExt.Truncate(item.Description, 60)  
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a id="btnModalPopup" asp-page="TestModal" asp-route-id="@item.Id" class="btn btn-info">
+                            <i class="bi bi-zoom-in"></i>
+                        </a>
+                        
+                    </td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+</div>
+

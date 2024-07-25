@@ -1,0 +1,47 @@
+﻿@page
+@model GitDump.Pages.Tests.TestModalModel
+@{
+    ViewData["Title"] = "Test Modal";
+}
+
+<div class="container p-5">
+    <input hidden asp-for="Topic.Id" />
+    <div class="row">
+        <div class="col-5">
+            <a asp-page="Index">
+                <button class="btn btn-secondary">
+                    <i class="bi bi-arrow-left-circle"></i>
+                </button>
+            </a>
+        </div>
+        <div class="col-6">
+            <h3 style="color:tomato">@Model.Topic.Name</h3>
+        </div>
+        
+    </div>
+    <hr />
+    <div class="text-center">
+        @if (Model.Topic.Status == "started")
+        {
+            <span class="badge text-bg-secondary">@Model.Topic.Status</span>
+        }
+        else
+        {
+            @if (Model.Topic.Status == "ongoing")
+            {
+                <span class="badge text-bg-info">@Model.Topic.Status</span>
+            }
+            else
+            {
+                <span class="badge text-bg-success">@Model.Topic.Status</span>
+            }
+        }
+    </div>
+    <div class="mt-3">
+
+            <p>
+                @Model.Topic.Description
+            </p>
+    </div>   
+    
+</div>

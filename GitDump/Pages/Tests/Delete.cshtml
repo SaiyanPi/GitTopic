@@ -1,0 +1,35 @@
+﻿@page
+@model GitDump.Pages.Tests.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post">
+    <input hidden asp-for="Topic.Id" />
+    <div class="container p-5">
+
+        <div class="col-6">
+            <h2 style="color:tomato">Delete Test Data</h2>
+        </div>
+        <hr />
+        <div class="center">
+            <div class="border p-3 mt-4">
+                <div class="mb-3">
+                    <label asp-for="Topic.Name"></label>
+                    <input asp-for="Topic.Name" class="form-control" readonly/> 
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Topic.Status"></label>
+                    <input asp-for="Topic.Status" class="form-control" readonly/>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Topic.Description"></label>
+                    <input asp-for="Topic.Description" class="form-control" readonly/>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100px;">Ok</button>
+                <a asp-page="Index" class="btn btn-secondary" style="width:100px;">Cancel</a>
+            </div>
+        </div>
+
+    </div>
+</form>
